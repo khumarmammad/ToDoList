@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200;0,6..12,300;0,6..12,400;0,6..12,500;0,6..12,600;0,6..12,700;0,6..12,800;0,6..12,900;1,6..12,200;1,6..12,300;1,6..12,400;1,6..12,500;1,6..12,600;1,6..12,700;1,6..12,800;1,6..12,900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,200;1,300;1,400;1,500;1,600;1,700&family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap');
 
 * {
     margin: 0;
@@ -22,6 +22,7 @@ main {
     justify-content: center;
     align-items: center;
 }
+
 .all {
     width: 336px;
     display: flex;
@@ -32,6 +33,7 @@ main {
     padding: 0px;
     background-color: #ffffff;
 }
+
 .head {
     width: 100%;
     height: 28px;
@@ -41,44 +43,89 @@ main {
 
 h1 {
     margin: 20px 0;
-    font-size: 26px;
+    font-size: 30px;
     font-weight: 900;
     text-align: center;
-    font-family: 'Roboto', sans-serif;
-    color: #333;
+    color: #000;
 }
+
 .sort-container {
     margin-top: -8px;
-    margin-bottom: 8px;
-    align-self: flex-end;
-    position: relative;
+    margin-bottom: 3px;
+    margin-left: 250px;
 }
+
 .sort,
 .sorthover,
 .sortik,
 .sortikhover {
-    width: 25px;
-    height: 15px;
+    width: 30px;
+    height: 20px;
     cursor: pointer;
-    transition: opacity 0.3s;
+    transition: opacity 0s;
 }
+
 .sorthover,
 .sortikhover {
-    display: none; 
+    display: none;
 }
+
 .sort-container:hover .sort {
-    display: none; 
+    display: none;
 }
 
 .sort-container:hover .sorthover {
-    display: inline; 
+    display: inline;
 }
+
 .sortik {
-    display: none; 
+    display: none;
 }
-.sortik:hover {
-    opacity: 0; 
+
+.myList {
+   display: flex;
+    align-items: center;
+    border: 1px solid #C4C4C4;
+    border-radius: 6px;
+    width: 90%;
+    margin-bottom: 20px;
+    padding: 5px;
 }
+
+.myList ol {
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+}
+
+.myList li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    font-size: 14px;
+    transition: background-color 0.3s;
+}
+
+.myList li:hover {
+    background-color: #f9f9f9;
+}
+
+.myList li .task-input {
+    width: 80%;
+    border: none;
+    font-size: 14px;
+}
+
+.myList li .task-input:focus {
+    outline: none;
+}
+
+.task.dragging {
+    opacity: 0.5;
+    background-color: #e0e0e0;
+}
+
 .input-container {
     display: flex;
     align-items: center;
@@ -88,6 +135,7 @@ h1 {
     margin-bottom: 20px;
     padding: 5px;
 }
+
 input[type="text"] {
     width: 80%;
     height: 25px;
@@ -96,32 +144,34 @@ input[type="text"] {
     font-size: 14px;
     font-weight: 400;
 }
-input[type="text"]::placeholder {
-    color: #bbb;
-}
-
 input:focus {
     outline: none;
 }
+
 img.x,
 img.xhover {
-    width: 12px;
+    width: 20px;
     cursor: pointer;
-    margin-left: 10px;
-    transition: opacity 0.3s;
+    margin-left: 32px;
+    transition: opacity 0.1s;
 }
+
 img.x {
     display: inline;
 }
+
 img.xhover {
     display: none;
 }
+
 .input-container:hover .x {
     display: none;
 }
+
 .input-container:hover .xhover {
     display: inline;
 }
+
 .add-button {
     display: flex;
     align-items: center;
@@ -138,6 +188,7 @@ img.xhover {
     margin-bottom: 20px;
     position: relative;
 }
+
 .plus {
     display: flex;
     align-items: center;
@@ -147,53 +198,12 @@ img.xhover {
     height: 42px;
     border-radius: 50%;
     position: absolute;
-    left: 0px; 
-    margin-right: 10px; 
-}
-.add {
-    flex-grow: 1; 
-    text-align: center;
-}
-.myList {
-    width: 90%;
-    margin: 5px 0;
-    font-family: 'Roboto', sans-serif;
-    font-size: 14px;
-    display: flex;
-    flex-direction: column;
-    border-radius: 5px;
-}
-.myList ol {
-    width: 100%;
-    list-style-type: none;
-    padding: 0;
-}
-.myList li {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px;
-    border-bottom: 1px solid #C4C4C4;
-    font-size: 14px;
-    font-family: 'Roboto', sans-serif;
-    transition: background-color 0.3s;
-}
-.myList li:hover {
-    background-color: #f9f9f9;
-}
-.myList li .task-input {
-    width: 80%;
-    border: none;
-    font-size: 14px;
-}
-.myList li .task-input:focus {
-    outline: none;
-}
-.task.dragging {
-    opacity: 0.5;
-    background-color: #e0e0e0;
-}
-.number {
-    font-weight: bold;
+    left: 0px;
     margin-right: 10px;
+}
+
+.add {
+    flex-grow: 1;
+    margin-left: 25px;
+    ;
 }
