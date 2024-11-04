@@ -8,30 +8,27 @@ document.addEventListener('DOMContentLoaded', () => {
     const inputField = document.querySelector('.input-container input');
     let ascending = true;
 
-    function addTask(taskText = '') {
+    const addTask = (taskText = '') => {
         const li = document.createElement('li');
         li.classList.add('task');
         li.setAttribute('draggable', 'true');
         li.innerHTML = `
-            <input type="text" value="${taskText}" class="task-input" placeholder="Новая задача" />
+            <input type="text" value="${taskText}" class="task-input" />
             <img class="x" src="./Group 77.svg" alt="delete">
+            <img class="xhover" src="./Group 70.svg" alt="delete-hover">
         `;
         attachTaskEvents(li);
         taskList.appendChild(li);
         inputField.value = '';
-    }
+    };
 
-    function attachTaskEvents(task) {
+    const attachTaskEvents = (task) => {
         const deleteIcon = task.querySelector('.x');
-        deleteIcon.addEventListener('click', () => {
-            task.remove();
-        });
-        task.addEventListener('dragstart', () => {
-            task.classList.add('dragging');
-        });
-        task.addEventListener('dragend', () => {
-            task.classList.remove('dragging');
-        });
+        deleteIcon.addEventListener('click', () => task.remove());
+
+        task.addEventListener('dragstart', () => task.classList.add('dragging'));
+        task.addEventListener('dragend', () => task.classList.remove('dragging'));
+
         task.addEventListener('dragover', (e) => {
             e.preventDefault();
             const draggingTask = document.querySelector('.dragging');
@@ -40,8 +37,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 taskList.insertBefore(draggingTask, next ? task : task.nextSibling);
             }
         });
-    }
-    function sortTasks() {
+    };
+
+    const sortTasks = () => {
         const tasks = Array.from(taskList.children);
         tasks.sort((a, b) => {
             const aText = a.querySelector('.task-input').value.toLowerCase();
@@ -51,9 +49,9 @@ document.addEventListener('DOMContentLoaded', () => {
         taskList.innerHTML = '';
         tasks.forEach(task => taskList.appendChild(task));
         updateSortIcons();
-    }
+    };
 
-    function updateSortIcons() {
+    const updateSortIcons = () => {
         if (ascending) {
             sortTasksButton.style.display = 'none';
             sortTasksHoverButton.style.display = 'none';
@@ -66,11 +64,9 @@ document.addEventListener('DOMContentLoaded', () => {
             sortikhover.style.display = 'inline';
         }
         ascending = !ascending;
-    }
+    };
 
-    addTaskButton.addEventListener('click', () => {
-        addTask(inputField.value);
-    });
+    addTaskButton.addEventListener('click', () => addTask(inputField.value));
 
     inputField.addEventListener('keypress', (e) => {
         if (e.key === 'Enter') {
